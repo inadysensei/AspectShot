@@ -46,9 +46,9 @@ xcodebuild test -project AspectShot.xcodeproj -scheme AspectShotKitTests \
   watch it fail, implement to green, then refactor. Logic that can't be expressed as a Kit unit
   test usually belongs in the app shell — but consider whether it can be extracted to the Kit
   (as `CaptureCoordinator` was) so it *can* be tested.
-- **Refactor reviews use two subagents** — a Swift/macOS specialist and an SVP-level engineer —
-  run read-only, with the findings applied by the main session. (See `.claude/agents/` and the
-  `refactor` skill in `.claude/skills/` once added.)
+- **Refactor reviews use two subagents** — `swift-specialist` and `svp-engineer` (`.claude/agents/`)
+  — run read-only, with the findings applied test-first by the main session. The `refactor` skill
+  (`.claude/skills/refactor/`) orchestrates this pass; invoke it for a review-and-cleanup step.
 
 ## Invariants & gotchas
 
