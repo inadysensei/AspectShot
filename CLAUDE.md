@@ -67,6 +67,13 @@ xcodebuild test -project AspectShot.xcodeproj -scheme AspectShotKitTests \
   no `project.pbxproj` editing required. New top-level folders/targets *do* require project edits.
 - **Info.plist** keys use build-setting substitution (e.g. `$(PRODUCT_BUNDLE_IDENTIFIER)`);
   `GENERATE_INFOPLIST_FILE = NO`. Keep `CFBundleIdentifier` et al. present.
+- **Debug vs Release identity is intentionally distinct.** Debug builds use bundle id
+  `com.inadysensei.AspectShot.debug` and display name "AspectShot Dev"; Release uses
+  `com.inadysensei.AspectShot` / "AspectShot". This is so the dev and production builds get
+  **separate Screen Recording (TCC) grants** instead of colliding — TCC keys on bundle id +
+  signature, so a shared identity made the grant flap between builds. Don't unify them.
+  (For the dev grant to persist across rebuilds, sign Debug with a stable identity — set your
+  Team in Xcode → Signing & Capabilities — rather than ad-hoc "Sign to Run Locally".)
 - **App Sandbox is intentionally OFF**; Screen Recording is gated by TCC at runtime.
 
 ## What can't be verified here
