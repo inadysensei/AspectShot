@@ -6,6 +6,26 @@ A small native macOS app for taking **aspect-ratio-locked screenshots**. Drag a 
 
 ---
 
+## Download
+
+Grab a pre-built `.app` from the [**Releases**](https://github.com/inadysensei/AspectShot/releases/latest)
+page: download `AspectShot-vX.Y.Z-macos.zip`, unzip it, and move `AspectShot.app` to `/Applications`.
+
+> [!IMPORTANT]
+> The app is **not notarized**, so on first launch macOS Gatekeeper blocks it ("…cannot be opened
+> because the developer cannot be verified"). Clear the quarantine flag once, then open normally:
+> ```bash
+> xattr -dr com.apple.quarantine /Applications/AspectShot.app
+> ```
+> (Alternatively: right-click the app → **Open**; on macOS Sequoia+ you may also need
+> **System Settings → Privacy & Security → "Open Anyway"**.) Then grant **Screen Recording** and
+> **relaunch** — see [Screen Recording permission](#screen-recording-permission) below.
+
+> リリースページから zip をダウンロード・展開し、`AspectShot.app` を `/Applications` へ。公証なしのため、
+> 初回のみ上記コマンドで隔離属性を解除（または右クリック →「開く」）してください。詳細はリリースノート参照。
+
+To build from source instead, see [Build & run](#build--run).
+
 ## Features
 
 - **Aspect-ratio-locked selection.** Rubber-band a frame that always keeps a 16:9 ratio.
