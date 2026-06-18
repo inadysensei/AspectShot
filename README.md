@@ -98,21 +98,3 @@ The pure logic is covered by unit tests (the GUI/capture path can't run headless
 ```bash
 xcodebuild test -project AspectShot.xcodeproj -scheme AspectShotKitTests -destination 'platform=macOS'
 ```
-
-## Known limitations / roadmap
-
-- **Distribution requires signing.** The app builds with automatic signing for local use. To share
-  it, set up Developer ID signing + notarization — otherwise the Screen Recording grant breaks on
-  every rebuild (TCC keys the grant to the signature).
-- **No app icon yet** (ships with the generic icon, which also shows in the permission list).
-- **Single-display selection.** A selection lives on one display at a time (by design).
-- **Same-second filenames** would overwrite; add a uniquing suffix if that matters to you.
-- **Japanese-only UI strings** in the permission/error dialogs.
-- **App Sandbox is intentionally off** — a Developer-ID utility needs unsandboxed `~/Downloads`
-  access, and Screen Recording is gated by TCC at runtime, not by an entitlement.
-
-## Project notes
-
-- The Xcode project uses **file-system-synchronized groups**, so new `.swift` files added to a
-  target's folder are picked up automatically — no `project.pbxproj` edits needed.
-- Built test-first (Red → Green → Refactor).
